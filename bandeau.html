@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLASH 48H - Mastermind Saône-et-Loire</title>
+<style>
+/* Reset CSS pour emails */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: Arial, sans-serif;
+line-height: 1.6;
+color: #222221;
+background-color: #f4f4f4;
+margin: 0;
+padding: 20px 0;
+}
+.email-container {
+max-width: 600px;
+margin: 0 auto;
+background-color: #ffffff;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Bandeau urgence en haut */
+.urgency-banner {
+background: linear-gradient(135deg, #e1aa1b, #bf5755);
+color: #ffffff;
+text-align: center;
+padding: 12px;
+font-weight: bold;
+font-size: 16px;
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0% { opacity: 1; }
+50% { opacity: 0.8; }
+100% { opacity: 1; }
+}
+
+/* Header avec logo */
+.header {
+background: linear-gradient(135deg, #222221 0%, #333 100%);
+color: #ffffff;
+text-align: center;
+padding: 25px 20px;
+}
+.logo-container {
+display: inline-block;
+margin-bottom: 15px;
+}
+.logo-image {
+width: 180px;
+height: auto;
+max-width: 100%;
+border: 2px solid #e1aa1b;
+border-radius: 6px;
+background-color: #000000;
+}
+.header h1 {
+font-size: 28px;
+font-weight: bold;
+margin: 15px 0 8px;
+color: #e1aa1b;
+}
+.header .subtitle {
+font-size: 16px;
+color: #7cb79d;
+font-weight: bold;
+}
+
+/* Contenu principal */
+.content {
+padding: 25px;
+}
+.greeting {
+font-size: 16px;
+margin-bottom: 15px;
+color: #222221;
+}
+
+/* Section Flash prominente */
+.flash-section {
+background: linear-gradient(135deg, #e1aa1b, #bf5755);
+color: #ffffff;
+padding: 30px;
+border-radius: 12px;
+text-align: center;
+margin: 25px 0;
+position: relative;
+overflow: hidden;
+}
+.flash-section::before {
+content: "";
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: repeating-linear-gradient(
+45deg,
+transparent,
+transparent 10px,
+rgba(255,255,255,0.1) 10px,
+rgba(255,255,255,0.1) 20px
+);
+animation: move 3s linear infinite;
+}
+@keyframes move {
+0% { transform: translate(-50%, -50%) rotate(0deg); }
+100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.flash-content {
+position: relative;
+z-index: 1;
+}
+.flash-title {
+font-size: 32px;
+font-weight: bold;
+margin-bottom: 15px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.flash-subtitle {
+font-size: 18px;
+margin-bottom: 20px;
+}
+.countdown-container {
+background: rgba(0,0,0,0.3);
+padding: 15px;
+border-radius: 8px;
+margin: 20px 0;
+}
+.countdown {
+font-size: 24px;
+font-weight: bold;
+color: #e5e035;
+}
+
+/* Prix en évidence */
+.price-comparison {
+background: #ffffff;
+color: #222221;
+padding: 25px;
+border-radius: 8px;
+margin: 25px 0;
+text-align: center;
+border: 3px solid #e1aa1b;
+}
+.old-price {
+font-size: 20px;
+text-decoration: line-through;
+color: #666;
+margin-bottom: 10px;
+}
+.flash-price {
+font-size: 36px;
+font-weight: bold;
+color: #bf5755;
+margin-bottom: 10px;
+}
+.savings {
+font-size: 18px;
+color: #e1aa1b;
+font-weight: bold;
+}
+
+/* Avantages rapides */
+.benefits-flash {
+background: #f8f9fa;
+padding: 20px;
+border-radius: 8px;
+margin: 20px 0;
+}
+.benefits-flash h3 {
+color: #5767aa;
+text-align: center;
+margin-bottom: 15px;
+}
+.benefit-item {
+display: flex;
+align-items: center;
+margin: 10px 0;
+font-size: 14px;
+}
+.benefit-icon {
+color: #e1aa1b;
+margin-right: 10px;
+font-size: 16px;
+}
+
+/* CTA Flash très visible */
+.cta-flash {
+background: linear-gradient(135deg, #e1aa1b, #e5e035);
+padding: 25px;
+border-radius: 12px;
+text-align: center;
+margin: 30px 0;
+box-shadow: 0 8px 20px rgba(225, 170, 27, 0.3);
+}
+.cta-button-flash {
+background: #bf5755;
+color: #ffffff;
+padding: 18px 40px;
+text-decoration: none;
+border-radius: 30px;
+font-size: 20px;
+font-weight: bold;
+display: inline-block;
+margin: 15px 0;
+text-transform: uppercase;
+letter-spacing: 1px;
+box-shadow: 0 4px 15px rgba(191, 87, 85, 0.4);
+transition: all 0.3s ease;
+}
+.cta-button-flash:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(191, 87, 85, 0.6);
+}
+
+/* Rappel des détails essentiels */
+.event-summary {
+background: #5767aa;
+color: #ffffff;
+padding: 20px;
+border-radius: 8px;
+margin: 20px 0;
+}
+.event-summary h4 {
+color: #e5e035;
+margin-bottom: 10px;
+text-align: center;
+}
+.summary-item {
+margin: 8px 0;
+font-size: 14px;
+}
+
+/* Témoignage express */
+.testimonial-flash {
+background: #7cb79d;
+color: #ffffff;
+padding: 20px;
+border-radius: 8px;
+margin: 20px 0;
+text-align: center;
+font-style: italic;
+}
+
+/* Section urgence finale */
+.final-urgency {
+background: #bf5755;
+color: #ffffff;
+padding: 20px;
+border-radius: 8px;
+margin: 25px 0;
+text-align: center;
+}
+
+/* Footer simplifié */
+.footer {
+background: #f8f9fa;
+padding: 15px;
+text-align: center;
+font-size: 12px;
+color: #666;
+border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+.email-container {
+width: 100% !important;
+margin: 0 !important;
+border-radius: 0 !important;
+}
+.content {
+padding: 15px !important;
+}
+.flash-title {
+font-size: 24px !important;
+}
+.flash-price {
+font-size: 28px !important;
+}
+.countdown {
+font-size: 20px !important;
+}
+.cta-button-flash {
+padding: 15px 25px !important;
+font-size: 18px !important;
+}
+}
+</style>
+</head>
+<body>
+<div class="email-container">
+<!-- Bandeau urgence -->
+<div class="urgency-banner">
+⚡ FLASH 48H SEULEMENT - OFFRE LIMITÉE ⚡
+</div>
+
+<!-- Header -->
+<div class="header">
+<div class="logo-container">
+<img src="[URL_DE_VOTRE_LOGO]" alt="Le Cercle Vertueux - Mastermind" class="logo-image">
+</div>
+<h1>FLASH 48H</h1>
+<p class="subtitle">Une opportunité exceptionnelle qui expire DEMAIN !</p>
+</div>
+
+<!-- Contenu principal -->
+<div class="content">
+<div class="greeting">
+Bonjour [Prénom],
+</div>
+
+<p><strong>C'est maintenant ou jamais !</strong></p>
+
+<div class="flash-section">
+<div class="flash-content">
+<div class="flash-title">⚡ FLASH 48H ⚡</div>
+<div class="flash-subtitle">Rejoignez le Mastermind Saône-et-Loire</div>
+<div class="countdown-container">
+<div class="countdown">⏰ Plus que quelques heures !</div>
+<div style="font-size: 14px; margin-top: 5px;">Offre valable jusqu'au 22 août à 23h59</div>
+</div>
+</div>
+</div>
+
+<div class="price-comparison">
+<div class="old-price">Prix normal : 280€</div>
+<div class="flash-price">112€</div>
+<div class="savings">🔥 Économisez 168€ ! 🔥</div>
+</div>
+
+<p style="text-align: center; font-weight: bold; color: #bf5755; margin: 20px 0;">
+Vous avez hésité sur l'offre Pionnier à 98€ ?<br>
+Voici votre DERNIÈRE CHANCE à prix réduit !
+</p>
+
+<div class="benefits-flash">
+<h3>🚀 RAPPEL : Ce qui vous attend</h3>
+<div class="benefit-item">
+<span class="benefit-icon">✅</span>
+<span>Une journée complète d'intelligence collective</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">✅</span>
+<span>Solutions concrètes à VOS défis business</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">✅</span>
+<span>Un réseau de 10-12 entrepreneurs bienveillants</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">✅</span>
+<span>Plan d'actions personnalisé</span>
+</div>
+<div class="benefit-item">
+<span class="benefit-icon">✅</span>
+<span>Garantie satisfaction ou remboursement</span>
+</div>
+</div>
+
+<div class="event-summary">
+<h4>📅 INFOS ESSENTIELLES</h4>
+<div class="summary-item">📅 <strong>Date :</strong> [Date de votre session]</div>
+<div class="summary-item">⏰ <strong>Horaires :</strong> 9h00 - 17h30</div>
+<div class="summary-item">📍 <strong>Lieu :</strong> Cap Éco Zen - Allériot</div>
+<div class="summary-item">👥 <strong>Participants :</strong> Entrepreneurs non-concurrents</div>
+</div>
+
+<div class="testimonial-flash">
+"En une journée, j'ai eu plus de clarté sur mes priorités business que lors des 6 derniers mois passés seul dans mon bureau."
+<br><small><strong>- Entrepreneur participant (session test)</strong></small>
+</div>
+
+<div class="cta-flash">
+<h3 style="color: #222221; margin-bottom: 15px;">⚡ DERNIÈRES HEURES ⚡</h3>
+<a href="[LIEN_INSCRIPTION]" class="cta-button-flash">
+RÉSERVER - 112€ FLASH 48H
+</a>
+<p style="color: #222221; font-size: 14px; margin-top: 15px;">
+<strong>⚠️ Cette offre expire le 22/08 à 23h59</strong><br>
+Après, retour au prix normal de 280€
+</p>
+</div>
+
+<div class="final-urgency">
+<h4>🚨 DERNIÈRE CHANCE 🚨</h4>
+<p style="margin-bottom: 15px;">
+Places limitées • Offre non renouvelable<br>
+<strong>Ne laissez pas passer cette opportunité !</strong>
+</p>
+<p style="font-size: 14px;">
+<a href="tel:[VOTRE_NUMERO]" style="color: #e5e035; text-decoration: underline;">
+📞 Une question ? Appelez-moi maintenant
+</a>
+</p>
+</div>
+
+<p style="text-align: center; margin: 25px 0; font-style: italic;">
+"La différence entre où vous êtes et où vous voulez être,<br>
+c'est les décisions que vous prenez <strong>MAINTENANT</strong>."
+</p>
+
+<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+<p style="font-weight: bold; color: #5767aa;">
+[Votre Prénom] [Votre Nom]<br>
+<small>Facilitatrice Mastermind - Le Cercle Vertueux</small>
+</p>
+<div style="font-size: 14px; color: #666; margin-top: 10px;">
+📱 [Votre numéro] | 📧 [Votre email]
+</div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>Offre Flash 48H valable uniquement les 21 et 22 août 2025</p>
+<p style="margin-top: 5px;">
+<a href="[LIEN_DESINSCRIPTION]" style="color: #666;">Se désinscrire</a>
+</p>
+</div>
+
+</div>
+</body>
+</html>
